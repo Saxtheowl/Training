@@ -1,0 +1,34 @@
+1. What is meant by implied display? Is it available in the Python interactive
+shell or from a program file? Provide a simple example of implied display.
+2. Write and run a Python program that you store in a file. The program
+should demonstrate how to prompt the user for input and display the string
+the user entered.
+3. Using the Python interactive shell, instantiate a list that holds three-letter
+abbreviations for the first six months of the year and display the list.
+4. Using the Python interactive shell, use a for control structure to iterate
+through the elements of the list you instantiated in exercise 3 and display
+each abbreviated name followed by a period on a line by itself. (Hint: The
+period is a string.)
+5. Using the Python interactive shell, put the elements of the list you instantiated
+in exercise 3 in alphabetical order.
+6. Instantiate a dictionary in which the keys are the months in the third quarter
+of the year and the values are the number of days in the corresponding
+month. Display the dictionary, the keys, and the values. Add the tenth
+month of the year to the dictionary and display the value of that month only.
+7. What does iterable mean? Name two builtin objects that are iterable. Which
+control structure can you use to loop through an iterable object?
+8. Write and demonstrate a Lambda function named stg() that appends .txt to
+its argument. What happens when you call the function with an integer?
+
+1. it allow a shell to output command of a programming language, it is avaible in the python interactive shell, >>> a = 5 >>> a  5
+2.done
+3.>>>months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun'] >>> months
+4.['jan', 'feb', 'mar', 'apr', 'may', 'jun']
+>>> for i in months:
+...     print months[cnt] + '.'
+...     cnt += 1
+5. sorted(months)
+6. >>> Q3 = {'august':31, 'september':30, 'october':31} >>> Q3['november'] = 30 >>> >>> Q3['november']
+7. it mean it can be parsed one by one, list and dictionnary, for
+8. >>> a = lambda a: a + '.txt' >>> a('lol')
+it output an error, it can be fixed by adding ' ' to the number

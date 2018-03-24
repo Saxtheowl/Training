@@ -1,0 +1,64 @@
+9. Define a function named cents that returns its argument divided by 100 and
+truncated to an integer. For example:
+>>> cents(12345)
+123
+10. Define a function named cents2 that returns its argument divided by 100
+exactly (and includes decimal places if necessary). Make sure your function
+does not truncate the answer. For example:
+>>> cents2(12345)
+123.45
+11. Create a list that has four elements. Make a copy of the list and change one
+of the elements in the copy. Show that the same element in the original list
+did not change.Advanced Exercises
+593
+12. Why does the following assignment statement generate an error?
+>>> x.y = 5
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+NameError: name 'x' is not defined
+13. Call map() with two arguments:
+1. A Lambda function that returns the square of the number it was called
+with
+2. A list holding the even numbers between 4 and 15; generate the list inline
+using range()
+14. Use a list comprehension to display the numbers from 1 through 30 inclusive
+that are divisible by 3.
+15. Write a function that takes an integer, val, as an argument. The function
+asks the user to enter a number. If the number is greater than val, the
+function displays Too high. and returns 1; if the number is less than val,
+the function displays Too low. and returns –1; if the number equals val,
+the function displays Got it! and returns 0. Call the function repeatedly
+until the user enters the right number.
+16. Rewrite exercise 15 to call the function with a random number between 0
+and 10 inclusive. (Hint: The randint function in the random library returns
+a random number between its two arguments inclusive.)
+17. Write a function that counts the characters in a string the user inputs. Then
+write a routine that calls the function and displays the following output.
+$ ./count_letters.py
+Enter some words: The rain in Spain
+The string "The rain in Spain" has 17 characters in it.
+18. Write a function that counts the vowels (aeiou) in a string the user inputs.
+Make sure it counts upper- and lowercase vowels. Then write a routine that
+calls the function and displays the following output.
+$ ./count_vowels.py
+Enter some words: Go East young man!
+The string "Go East young man!" has 6 vowels in it.
+19. Write a function that counts all the characters and the vowels in a string
+the user inputs. Then write a routine that calls the function and displays
+the following output.
+$ ./count_all.py
+Enter some words: The sun rises in the East and sets in the West.
+13 letters in 47 are vowels.
+
+9. cents.py
+10. cents2.py
+11. >>> four_elem_list = ['elem1', 'elem2', 'elem3', 'elem4'] >>> four_elem_list_copy = four_elem_list[:] >>> four_elem_list[1] = 'lul' >>> four_elem_list_copy
+12. because x was not previously defined
+13. >>> lambda_func = lambda x : x * x
+>>> map(lambda_func, range(4, 15, 2))
+14. display_num_dividible.py
+15. too_high_or_low.py
+16. too_high_or_low2.py
+17. count_letters.py
+18. count_letters2.py
+19. count_letters3.py

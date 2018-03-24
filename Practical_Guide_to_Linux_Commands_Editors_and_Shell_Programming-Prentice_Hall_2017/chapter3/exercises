@@ -1,0 +1,77 @@
+1. Which commands can you use to determine who is logged in on a specific
+terminal?
+2. How can you keep other users from using write to communicate with you?
+Why would you want to?
+3. What happens when you give the following commands if the file named
+done already exists?
+$ cp to_do done
+$ mv to_do done
+4. How can you find out which utilities are available on your system for edit-
+ing files? Which utilities are available for editing on your system?
+5. How can you find the phone number for Ace Electronics in a file named
+phone that contains a list of names and phone numbers? Which command
+can you use to display the entire file in alphabetical order? How can you dis-
+play the file without any adjacent duplicate lines? How can you display the
+file without any duplicate lines?
+6. What happens when you use diff to compare two binary files that are not
+identical? (You can use gzip to create the binary files.) Explain why the diff
+output for binary files is different from the diff output for ASCII files.
+7. Create a .plan file in your home directory. Does finger display the contents
+of your .plan file?80 Chapter 3 The Utilities
+8. What is the result of giving the which utility the name of a command that
+resides in a directory that is not in your search path?
+9. Are any of the utilities discussed in this chapter located in more than one
+directory on the local system? If so, which ones?
+10. Experiment by calling the file utility with the names of files in /usr/bin. How
+many different types of files are there?
+11. Which command can you use to look at the first few lines of a file named
+status.report? Which command can you use to look at the end of the file?
+Advanced Exercises
+12. Re-create the colors.1 and colors.2 files used in Figure 3-8 on page 59. Test
+your files by running diff –u on them. Does diff display the same results as
+in the figure?
+13. Try giving these two commands:
+$ echo cat
+$ cat echo
+Explain the differences between the output of each command.
+14. Repeat exercise 5 using the file phone.gz, a compressed version of the list
+of names and phone numbers. Consider more than one approach to answer
+each question and explain how you made your choices.
+15. Find or create files that
+a. gzip compresses by more than 80 percent.
+b. gzip compresses by less than 10 percent.
+c. Get larger when compressed with gzip .
+d. Use ls –l to determine the sizes of the files in question. Can you charac-
+terize the files in a, b, and c?
+16. Older email programs were not able to handle binary files. Suppose you are
+emailing a file that has been compressed with gzip , which produces a binary
+file, and the recipient is using an old email program. Refer to the man page
+on uuencode , which converts a binary file to ASCII. Learn about the utility
+and how to use it.
+a. Convert a compressed file to ASCII using uuencode . Is the encoded file
+larger or smaller than the compressed file? Explain. (If uuencode is not on
+the local system, you can install it using one of the tools described in
+Appendix C; it is part of the sharutils package.)
+b. Would it ever make sense to use uuencode on a file before compressing
+it? Explain.
+
+1. w
+2. mesg n
+3. cp give an error message because the file already exist
+mv overwrite the file
+4. locate edit or whereis edit
+5. grep 'Ace Electronics' phone, sort phone, uniq phone, sort 
+6. it indicate that the files differ, it is different form an ascii files because in an ascii files diff can indicate which lines differ
+7. @
+8. sudo needed ?
+9. no
+10. ELF 64-bit LSB executable, POSIX shell script, symbolic link(more symbolic link, so 3 + other symbolic link
+11. head for begining tail for end
+12. done, yes
+13. echo cat display cat because echo receive the string cat and display it
+cat echo say that there is not a proper directory because cat want to read and display the content of a file
+14. cant because binary
+15. a file done, because it is all the same characters
+b file done, because it is almost all the same characters
+c file done, because doesnt follow a logic, never the same characters..
+16 done, no because it would have to be transformed into binary again

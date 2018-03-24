@@ -1,0 +1,43 @@
+11. What is an inode? What happens to the inode when you move a file within
+a filesystem?
+12. What does the .. entry in a directory point to? What does this entry point
+to in the root (/) directory?
+13. How can you create a file named –i? Which techniques do not work, and
+why do they not work? How can you remove the file named –i?Advanced Exercises
+14. Suppose the working directory contains a single file named andor. What
+error message is displayed when you run the following command line?
+$ mv andor and\/or
+Under what circumstances is it possible to run the command without pro-
+ducing an error?
+15. The ls –i command displays a filename preceded by the inode number of the
+file (page 112). Write a command to output inode/filename pairs for the
+files in the working directory, sorted by inode number. (Hint: Use a
+pipeline.)
+16. Do you think the system administrator has access to a program that can
+decode user passwords? Why or why not? (See exercise 6.)
+17. Is it possible to distinguish a file from a hard link to a file? That is, given a
+filename, can you tell whether it was created using an ln command?
+Explain.
+18. Explain the error messages displayed in the following sequence of
+commands:
+$ ls -l
+drwxrwxr-x. 2 max pubs 1024 03-02 17:57 dirtmp
+$ ls dirtmp
+$ rmdir dirtmp
+rmdir: dirtmp: Directory not empty
+$ rm dirtmp/ *
+rm: No match.
+
+11. inode is a unique number associated with a file, if you move the file its inode stay the same
+12. the .. is the subdirectory of the working directory, if you try to cd the one of the / directory it will do nothing
+13.
+we can create the file with cp a ../advanced_exercices/-i advanced_exercice was my working directory
+the classic touch -i does not work because it is interpreted as a flag by touch
+we can delete it the same way with rm ../advanced_exercice/-i or by inode with find
+14.
+$mkdir and
+$mv andor and/or
+15. ls -i | sort
+16. no, because they can even be viewed by people with less access than him
+17. yes, because they will ahve the same inode number
+18. ((not the same linux))

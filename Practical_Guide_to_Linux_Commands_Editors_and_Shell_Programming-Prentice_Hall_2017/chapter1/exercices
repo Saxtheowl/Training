@@ -1,0 +1,40 @@
+1. What is free software? List three characteristics of free software.
+2. Why is Linux popular? Why is it popular in academia?
+3. What are multiuser systems? Why are they successful?
+Exercises 19
+4. What is the Free Software Foundation/GNU? What is Linux? Which parts
+of the Linux operating system did each provide? Who else has helped build
+and refine this operating system?
+5. In which language is Linux written? What does the language have to do
+with the success of Linux?
+6. What is a utility program?
+7. What is a shell? How does it work with the kernel? With the user?
+8. How can you use utility programs and a shell to create your own
+applications?
+9. Why is the Linux filesystem referred to as hierarchical?
+10. What is the difference between a multiuser and a multitasking system?
+11. Give an example of when you would want to use a multitasking system.
+12. Approximately how many people wrote Linux? Why is this project unique?
+13. What are the key terms of the GNU General Public License?
+
+1. a free software is software that can be used, distributed, studied, and modified freely
+A. ?
+2. linux is popular because it is like the already popular Unix opearting system but is a free software, it is popular among academia because they use a lot of mainfram and thus can use the multi user capability of linux which can divide the use of the mainframes among many user terminal
+A. Application, peripherals, standard, it became popular in academia because Unix was made free 4 years to unniversity so students adopted it and so adopted linux later
+3. a multiuser system is an operation system which able different user to use the same computer among different terminal, they are sucessful because they able lots of user to use one single computer and use this computer at his maximum capacity
+A.
+4. the free software fondation is a group founded by richard stallman who make and defend free software, they build things like gcc, lots of participant helped and still maintain the linux project
+A. the intent was to build a full free OS they had all but the kernel whi
+5. linux is written in C, the c language is very portable and so programs who use it are easily portable to different architecture, a machine that can compile C can compile linux
+A.
+6
+A. a program which help to analyze, configure, maintain or optimize a computer
+7. a shell is a program, which allow the user to use the system  with a CLI, Command line interface
+A. a shell is a program that is an interface between the user and the machine, it allow to interpret command and launch the appropriate progams 
+8.
+9. because it use a structure of files in tree, like folders in windows
+10. a multiuser allow the machine to be used by multiple users at the same times, a multitasking allow the machine to run different programs at the same times
+11. you want a multitasking system when you want to browse the internet and watch a movie a the same time
+12. thousand of peoples helped to build linux, it is unique because no other project has that many contributors
+13. the program under the GPL can be used, distributed, modified, viewed
+A. if the code is modified it must stay under the gpl licencex
