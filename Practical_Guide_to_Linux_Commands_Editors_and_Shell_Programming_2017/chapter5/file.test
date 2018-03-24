@@ -1,0 +1,23 @@
+total 104
+-rw-rw-r-- 1 roro roro    24 mars  24 18:51 a
+-rw-rw-r-- 1 roro roro    10 mars  24 15:01 aa
+-rw-rw-r-- 1 roro roro     0 mars  24 14:29 aa~
+-rw-rw-r-- 1 roro roro     0 mars  24 18:12 ab
+-rw-rw-r-- 1 roro roro     0 mars  24 18:16 amemo
+-rw-rw-r-- 1 roro roro     3 mars  24 14:07 b
+-rw-rw-r-- 1 roro roro     6 mars  24 14:31 bb
+drwxrwxr-x 2 roro roro  4096 mars  24 18:37 dir_a
+-rw-rw-r-- 1 roro roro  2555 mars  24 18:49 #exercices#
+-rw-rw-r-- 1 roro roro    34 mars  24 15:19 ls.out
+-rw-rw-r-- 1 roro roro     0 mars  24 18:16 mem
+-rw-rw-r-- 1 roro roro     0 mars  24 18:16 memalx
+-rw-rw-r-- 1 roro roro     0 mars  24 18:16 memo
+-rw-rw-r-- 1 roro roro     0 mars  24 18:16 memo.0612
+-rw-rw-r-- 1 roro roro 64614 mars  24 15:42 mem.out
+-rw-rw-r-- 1 roro roro     0 mars  24 18:29 part1
+-rw-rw-r-- 1 roro roro     0 mars  24 18:29 part2
+-rw-rw-r-- 1 roro roro     0 mars  24 18:29 part3
+-rw-rw-r-- 1 roro roro    24 mars  24 18:52 temp
+-rw-rw-r-- 1 roro roro     1 mars  24 15:05 temp~
+-rw-rw-r-- 1 roro roro    27 mars  24 15:15 x
+-rw-rw-r-- 1 roro roro     0 mars  24 15:35 xx

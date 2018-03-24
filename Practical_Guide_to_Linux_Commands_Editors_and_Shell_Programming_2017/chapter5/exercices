@@ -1,0 +1,99 @@
+1. What does the shell ordinarily do while a command is executing? What
+should you do if you do not want to wait for a command to finish before
+running another command?
+2. Using sort as a filter, rewrite the following sequence of commands:
+$ sort list > temp
+$ lpr temp
+$ rm temp
+3. What is a PID number? Why are these numbers useful when you run processes
+in the background? Which utility displays the PID numbers of the commands
+you are running?
+4. Assume the following files are in the working directory:
+$ ls
+intro
+notesa
+notesb
+ref1
+ref2
+ref3
+section1
+section2
+section3
+section4a
+section4b
+sentrev
+Give commands for each of the following, using wildcards to express
+filenames with as few characters as possible.
+a. List all files that begin with section.
+b. List the section1, section2, and section3 files only.
+c. List the intro file only.160 Chapter 5
+The Shell
+d. List the section1, section3, ref1, and ref3 files.
+5. Refer to Part VII or the info or man pages to determine which command will
+a. Display the number of lines in its standard input that contain the word a or A.
+b. Display only the names of the files in the working directory that contain
+the pattern $(.
+c. List the files in the working directory in reverse alphabetical order.
+d. Send a list of files in the working directory to the printer, sorted by size.
+6. Give a command to
+a. Redirect standard output from a sort command to a file named
+phone_list. Assume the input file is named numbers.
+b. Translate all occurrences of the characters [ and { to the character (, and
+all occurrences of the characters ] and } to the character ), in the file
+permdemos.c. (Hint: Refer to tr on page 1014.)
+c. Create a file named book that contains the contents of two other files:
+part1 and part2.
+7. The lpr and sort utilities accept input either from a file named on the command
+line or from standard input.
+a. Name two other utilities that function in a similar manner.
+b. Name a utility that accepts its input only from standard input.
+8. Give an example of a command that uses grep
+a. With both input and output redirected.
+b. With only input redirected.
+c. With only output redirected.
+d. Within a pipeline.
+In which of the preceding cases is grep used as a filter?
+9. Explain the following error message. Which filenames would a subsequent
+ls command display?
+$ ls
+abc abd abe abf abg abh
+$ rm abc ab *
+rm: cannot remove 'abc': No such file or directory
+
+1. it wait for the program to send an exit or return signal
+you can type & after the command to make it run on the background
+
+2.  cat list | sort > temp
+    sort temp | lpr
+    wtf ?
+
+3. its a number used to identify unique process, it is usefull to identify a process and eventually kill it, ps
+
+4. a. ls section*
+   b. ls section?
+   c. ls in?ro
+   d. ls *[13]
+
+5. a. ls *[aA] | wc -l
+   b. ls *[$.\(]
+   c. ls | sort -r
+   d. ls -S | lpr
+
+6. a.> phone_list
+   b. cat permdos.c [{ \(, > permdos.c
+   c. cat part1 part2 > book
+
+7. a. cat grep and uniq
+   b. tr and xargs
+
+8. a. grep < , a > file_name
+   b. grep < , b 
+   c grep a file_name > file_name2
+   d cat a | grep b | sort
+
+it is used as filer in case d
+
+9. it display an empty directory
+
+
+
