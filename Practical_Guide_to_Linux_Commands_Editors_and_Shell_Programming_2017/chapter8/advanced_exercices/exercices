@@ -1,0 +1,46 @@
+Advanced Exercises
+9. Write a sequence of commands or a script that demonstrates variable
+expansion occurs before pathname expansion.
+10. Write a shell script that outputs the name of the shell executing it.
+11. Explain the behavior of the following shell script:
+$ cat quote_demo
+twoliner="This is line 1.
+This is line 2."
+echo "$twoliner"
+echo $twoliner
+a. How many arguments does each echo command see in this script? Explain.
+b. Redefine the IFS shell variable so the output of the second echo is the
+same as the first.
+12. Add the exit status of the previous command to your prompt so it behaves
+similarly to the following:
+$ [0] ls xxx
+ls: xxx: No such file or directory
+$ [1]
+13. The dirname utility treats its argument as a pathname and writes to standard out-
+put the path prefix—that is, everything up to but not including the last component:
+$ dirname a/b/c/d
+a/b/c
+If you give dirname a simple filename (no / characters) as an argument, dir-
+name writes a . to standard output:
+$ dirname simple
+.
+Implement dirname as a bash function. Make sure it behaves sensibly when
+given such arguments as /.
+14. Implement the basename utility, which writes the last component of its
+pathname argument to standard output, as a bash function. For example,
+given the pathname a/b/c/d, basename writes d to standard output:
+$ basename a/b/c/d
+d
+15. The Linux basename utility has an optional second argument. If you give
+the command basename path suffix, basename removes the suffix and the
+prefix from path:
+$ basename src/shellfiles/prog.bash .bash
+prog
+$ basename src/shellfiles/prog.bash .c
+prog.bash
+Add this feature to the function you wrote for exercise 14.
+
+9.
+10. echo $SHELL
+11. a. one argument
+    b.

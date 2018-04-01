@@ -1,0 +1,92 @@
+1. Explain the following unexpected result:
+$ whereis date
+date: /bin/date ...
+$ echo $PATH
+.:/usr/local/bin:/usr/bin:/bin
+$ cat > date
+echo "This is my own version of date."
+$ ./date
+Sun May 21 11:45:49 PDT 2017
+2. What are two ways you can execute a shell script when you do not have execute
+permission for the file containing the script? Can you execute a shell script if
+you do not have read permission for the file containing the script?
+3. What is the purpose of the PATH variable?
+a. Set the PATH variable and place it in the environment so it causes the
+shell to search the following directories in order:
+• /usr/local/bin
+• /usr/bin
+• /bin
+• /usr/kerberos/bin
+• The bin directory in your home directory
+• The working directory
+b. If there is an executable file named doit in /usr/bin and another file with
+the same name in your ~/bin directory, which one will be executed?
+c. If your PATH variable is not set to search the working directory, how can
+you execute a program located there?
+d. Which command can you use to add the directory /usr/games to the end
+of the list of directories in PATH?
+4. Assume you have made the following assignment:
+$ person=zachExercises 377
+Give the output of each of the following commands.
+a. echo $person
+b. echo '$person'
+c. echo "$person"
+5. The following shell script adds entries to a file named journal-file in your
+home directory. This script helps you keep track of phone conversations and
+meetings.
+$ cat journal
+# journal: add journal entries to the file
+# $HOME/journal-file
+file=$HOME/journal-file
+date >> $file
+echo -n "Enter name of person or group: "
+read name
+echo "$name" >> $file
+echo >> $file
+cat >> $file
+echo "----------------------------------------------------" >>
+$file
+echo >> $file
+a. What do you have to do to the script to be able to execute it?
+b. Why does the script use the read builtin the first time it accepts input from
+the terminal and the cat utility the second time?
+6. Assume the /home/zach/grants/biblios and /home/zach/biblios directories
+exist. Specify Zach’s working directory after he executes each sequence of
+commands. Explain what happens in each case.
+a. $ pwd
+/home/zach/grants
+$ CDPATH=$(pwd)
+$ cd
+$ cd biblios
+b. $ pwd
+/home/zach/grants
+$ CDPATH=$(pwd)
+$ cd $HOME/biblios
+7. Name two ways you can identify the PID number of the login shell.
+8. Enter the following command:
+$ sleep 30 | cat /etc/services
+Is there any output from sleep ? Where does cat get its input from? What has
+to happen before the shell will display a prompt?
+
+1. This want to print time and day (doesnt work on buntu)
+2. with .scriptfile 
+you must have read permission in order to execute a script file
+3. the path variable store all the path that store utilities binary file
+a. PATH=/usr/local/bin:/usr/bin:/bin:/usr/kerberos/bin:~/bin:~
+b. The one which is first in the path directory, so /usr/bin
+c. we can execute it with .
+d. PATH+=:/usr/games
+4. (none work on my system because assigning a space in a variable is not accepted) but
+a. zachExercises 377
+b. person
+c. zachExercises 377
+
+5. a. sh name of the script or . name of the script
+b. the first one to get a fixed input and put it into a variable the second to get an infinite input to put directly in the file
+6. a. /home/zach/grants/biblios
+b. /home/zach/grants/biblios
+
+7. ps -f | grep bash
+pstree -p | grep bash
+
+8. no but the command after pipe is executed because it is first in order, cat get input from the file /etc/services, 30 seconds is needed before the next prompt because of the sleep 30
