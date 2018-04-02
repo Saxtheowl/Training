@@ -42,5 +42,25 @@ Add this feature to the function you wrote for exercise 14.
 
 9.
 10. echo $SHELL
-11. a. one argument
-    b.
+11. a. one argument, single quote display the literal value of the variable, double quote will 
+    b.IFS = '|'
+12. PS1='[$?] '
+13.
+function dn () {
+if [ $# = 0 ]
+then
+exit 1
+elif [ "$1" = "/" ]
+then
+echo /
+elif (echo "$1" | grep -v "/" > /dev/null 2>&1)
+then
+echo .
+else
+echo $1 | sed 's:\(.*\)/.*:\1:'
+fi
+}
+
+14.
+
+15.
