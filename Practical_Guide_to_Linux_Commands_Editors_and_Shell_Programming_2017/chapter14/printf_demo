@@ -1,0 +1,5 @@
+BEGIN{
+print "lul\n\n"
+}
+{print $1
+}

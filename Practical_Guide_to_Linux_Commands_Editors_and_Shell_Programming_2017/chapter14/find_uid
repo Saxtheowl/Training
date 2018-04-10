@@ -1,0 +1,4 @@
+BEGIN{FS = ":"
+dat_save = 0}
+{if ($3 > dat_save) dat_save = $3}
+END{print dat_save}

@@ -1,0 +1,8 @@
+BEGIN{ yearsum = 0; costsum = 0; newcostsum = 0; newcount = 0
+}
+{
+yearsum += $3
+}
+{
+print yearsum
+}

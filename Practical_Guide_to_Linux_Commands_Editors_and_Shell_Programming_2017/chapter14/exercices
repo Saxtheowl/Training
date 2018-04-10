@@ -1,0 +1,28 @@
+1. Write a gawk program that numbers each line in a file and sends its output
+to standard output.
+2. Write a gawk program that displays the number of characters in the first
+field followed by the first field and sends its output to standard output.
+3. Write a gawk program that uses the cars file (page 645), displays all cars
+priced at more than $5,000, and sends its output to standard output.
+4. Use gawk to determine how many lines in /etc/services contain the string
+Mail. Verify your answer using grep .
+
+1.
+
+2.
+
+3.
+{
+if($5 > 5000) print $2
+}
+$awk -f ex4 cars
+
+4.
+{
+dat_var=0
+print $1
+if($1 ~ /Mail/) print lul
+}
+END{
+print dat_var
+}

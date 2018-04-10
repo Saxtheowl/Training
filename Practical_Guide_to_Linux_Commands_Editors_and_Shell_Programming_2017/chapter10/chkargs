@@ -1,0 +1,5 @@
+if test $1 = "abc" ; then
+    echo "right, first argument is abc"
+else
+    echo "wrong, first argument is not abc"
+fi

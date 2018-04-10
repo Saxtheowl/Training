@@ -1,0 +1,6 @@
+{
+OFS = "\t"
+if($1 ~ /ply/) $1 = "lul"
+if($1 ~ /chevy/) $ 1 = "lol"
+print
+}
