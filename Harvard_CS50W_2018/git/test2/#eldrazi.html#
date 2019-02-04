@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Eldrazis</title>
+  </head>
+  <body>
+    <h1>Informations</h1>
+	<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Called</th>
+	    <th>Cost</th>
+	  </tr>
+	  <tr>
+	    <img src="eldrazi
+	    <td>a</td>
+	    <td>b</td>
+	    <td>c</td>
+	  </tr>
+	  <tr>
+	    <td>d</td>
+	    <td>e</td>
+	    <td>f</td>
+	  </tr>
+	<!--<img src="Emrakul-Wallpaper.jpg" height="1%" width="99%"> -->
+  </body>
+</html>
