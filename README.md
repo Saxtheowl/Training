@@ -1,4 +1,4 @@
 # Training
-b
-c
+
+moocs, books, guides...
 
