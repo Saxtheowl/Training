@@ -1,0 +1,13 @@
+{
+  "name": "my_blockchain_wallet",
+  "version": "1.0.0",
+  "description": "simple blockchain wallet inspired by https://www.youtube.com/watch?v=sXBFggJaM6g and https://medium.com/blockthought/creating-bitcoin-wallets-in-js-69c0773c2954",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saxtheowl",
+  "license": "ISC"
+}

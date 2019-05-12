@@ -3,3 +3,4 @@
 *.pdf
 *.epub
 *.mobi
+my_blockchain_wallet/node_modules/*
