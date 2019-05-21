@@ -50,7 +50,7 @@ function createPublicAddress(publicKeyHash) {
 
 var tmp = createPublicAddress(publicKeyHash.toString("hex"));
 
-  console.log(" A PUBLIC ADRESS KEY HASH: " + tmp.toString("hex"));
+  console.log("A PUBLIC ADRESS KEY HASH: " + tmp.toString("hex"));
 
   function createPrivateKeyWIF(privateKey) {
     const step1 = Buffer.from("80" + privateKey, 'hex');
@@ -64,4 +64,4 @@ var tmp = createPublicAddress(publicKeyHash.toString("hex"));
 
   tmp = createPrivateKeyWIF(privateKey.toString("hex"));
 
-  console.log(" PRIVATE KEY WIF " + tmp.toString("hex"));
+  console.log("PRIVATE KEY WIF " + tmp.toString("hex"));
