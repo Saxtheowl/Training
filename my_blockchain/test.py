@@ -1,7 +1,7 @@
-class Restaurant(object):
-    bankrupt = False
-    def open_branch(self):
-        if not self.bankrupt:
-            print("branch opened")
+i = 0;
 
-print("test")
+def dat_func(b):
+    return b == 5
+
+if dat_func(5):
+    print("ok")
