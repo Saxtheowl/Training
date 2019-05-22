@@ -34,17 +34,41 @@ class Blockchain(object):
         return block
 
     def new_transaction(self, sender, recipient, amount):
-        # Adds a new transaction to the list of transactions
-        pass
+        """
+        Creates a new transaction to go into the next mined Block
+
+        :param sender: <str> Adress of the Sender
+        :param recipient: <str> Adress of the Recipient
+        :param amount: <int> Amount
+        :return: <int> The index of the Block that will hold this transaction
+        """
+        self.current_transactions.append({
+            'sender': sender,
+            'recipient': recipient,
+            'amount': amount,
+        })
     
-    @staticmethod
-    def hash(block):
-        # Hashes a Block
-        pass
+        return self.last_block['index'] + 1
 
     @property
     def last_block(self):
-        # Returns the last Block in the chain
-        pass
+        return self.chain[-1]
 
+    @staticmethod
+    def hash(block):
+        """
+        Creates a SHA-256 hash of a Block
+
+        :param block: <dict> Block
+        :return: <str>
+        """
+
+        #We must make sure that the Dictionary is Ordered, or we'll have inconsistent hashes
+        block_string = json.dumps(block, sort_keys=True).encode()
+        print(block_string)
+        return hashlib.sha256(block_string).hexdigest()
+
+a = Blockchain()
+a.new_block(100,2)
+a.hash(2)
 print("test")
