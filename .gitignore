@@ -6,3 +6,4 @@
 my_blockchain_wallet/node_modules/*
 eosio_elemental_battles/my-app/node_modules/*
 eosio_elemental_battles/eosio-card-game-repo/eosio_docker/*
+eosio_elemental_battles/eosio-card-game-repo/frontend/node_modules/*
