@@ -43,7 +43,6 @@
       componentDidMount() {
         const stopper = this.state.text + '...';
         this.interval = window.setInterval(() => {
-          console.log('RUNNING')
           this.state.text === stopper
             ? this.setState(() => ({ text: 'Loading' }))
             : this.setState((prevState) => ({ text: prevState.text + '.' }))

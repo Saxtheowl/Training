@@ -7,37 +7,37 @@
     <script src ='https://unpkg.com/babel-standalone@6/babel.min.js'></script>
   </head>
   <body>
-    <div>
-      lul
-      </div>
+    <div id='app'></div>
     <script type='text/babel'>
 
-let vals = [4, 8, 1, 2, 9];
-console.log(vals);
 
-function doubler(x) {
-  return x * 2;
-}
+var promise1 = new Promise(function(resolve, reject) {
+  resolve('Success!');
+});
 
-let doubled = vals.map(doubler);
-console.log(doubled);
 
-let objArray = [ { foo: 1, bar: 2}, { foo: 3, bar: 4}, { foo: 5, bar: 6} ];
+var promise2 = new Promise(function(resolve, reject) {
+  resolve('Success2!');
+});
 
-const  friends = [
-    {
-        name: 'Jordyn',
-        gender: 'male',
-    },
-    {
-        name: 'Mikenzi',
-        gender: 'female'
-    },
-    {
-        name:  'Jake',
-        gender: 'male'
-    }
-]
+
+//var promise2 = new Promise(resolve, reject) => resolve('Sucess2');
+
+promise1.then(function(value) {
+  console.log(value);
+  // expected output: "Success!"
+});
+
+promise2.then((valeur) => 
+  console.log(valeur));
+
+/*  promise2.then((valeur) => {
+  console.log(valeur); // Succès !
+  }, (raison) => {
+  console.log(raison); // Erreur !
+});  */
+
+
     </script>
   </body>
 </html>

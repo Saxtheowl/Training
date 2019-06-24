@@ -6,7 +6,7 @@ class [[eosio::contract]] cardgame : public eosio::contract {
 
 private:
 
-  struct user_info {
+  struct [[eosio::table]] user_info {
     name            username;
     uint16_t        win_count = 0;
     uint16_t        lost_count = 0;
@@ -16,7 +16,7 @@ private:
 
   typedef eosio::multi_index<name("users"), user_info> user_table;
 
-  users_table _users;
+  user_table _users;
 
 public:
 
