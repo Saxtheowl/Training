@@ -1,0 +1,60 @@
+function convertToRoman(num) {
+  var to_return = ""
+  while(num > 0) {
+    while(num >= 1000) {
+      to_return = to_return + "M"
+      num = num - 1000
+    }
+    if(num >= 900) {
+      to_return = to_return + "CM"
+      num -= 900
+    }
+    if(num >= 500) {
+      to_return = to_return + "D"
+      num -= 500
+    }
+    if(num >= 400) {
+      to_return = to_return + "CD"
+      num -= 400
+    }
+    while(num >= 100) {
+      to_return = to_return + "C"
+      num -= 100
+    }
+    if(num >= 90) {
+      to_return = to_return + "XC"
+      num -= 90
+    }
+    if(num >= 50) {
+      to_return = to_return + "L"
+      num -= 50
+    }
+    if(num >= 40) {
+      to_return = to_return + "XL"
+      num -= 40
+    }
+    while(num >= 10) {
+      to_return = to_return + "X"
+      num -= 10
+    }
+    if(num >= 9) {
+      to_return = to_return + "IX"
+      num -= 9
+    }
+    if(num >= 5) {
+      to_return = to_return + "V"
+      num -= 5
+    }
+    if(num >= 4) {
+      to_return = to_return + "IV"
+      num -= 4
+    }
+    while(num >= 1) {
+      to_return = to_return + "I"
+      num -= 1
+    }
+  }
+ return to_return;
+}
+
+console.log(convertToRoman(3999));
