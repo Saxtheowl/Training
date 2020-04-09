@@ -1,0 +1,24 @@
+function palindrome(str) {
+  console.log("first:", str)
+  var result = str.match(/[a-z]|[A-Z]|[0-9]/g)
+  result = result.join('')
+  console.log("second:", result)
+  result = result.toLowerCase()
+  console.log("third:", result)
+  
+  var dat_length = result.length
+  var i = result.length - 1
+  var y = 0
+  console.log(i)
+  while(dat_length > 0) {
+    if(result[i] != result[y])
+      return(false)
+    i--
+    y++
+    dat_length--
+    console.log(i)
+  }
+  return true;
+}
+
+console.log(palindrome("eye"));
