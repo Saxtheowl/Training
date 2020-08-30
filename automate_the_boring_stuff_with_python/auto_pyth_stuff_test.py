@@ -1,4 +1,4 @@
-import random, sys
+import random, sys, pyperclip
 
 def hello(name):
     hello("lul")
@@ -76,6 +76,8 @@ print(spam)
 spam.sort()
 print(spam)
 """
+
+"""
 eggs = [1, 2, 3]
 eggs[0] = 4
 print(eggs)
@@ -83,9 +85,38 @@ bacon = 'bacon'
 print(bacon[1])
 bacon[1] = 'b'
 
+"""
+"""
 ..OO.OO..
 .OOOOOOO.
 .OOOOOOO.
 ..OOOOO..
 ...OOO...
 ....O....
+"""
+"""
+dat_list = [1,2,3,4]
+
+for i in range(len(dat_list)):
+    print(dat_list[i])
+"""
+
+"""
+
+print(r'a')
+
+dat_list = ['je', 'mappel', 'roger', ', ']
+
+print(' '.join(dat_list).split(' '))
+"""
+
+def printPicnic(itemsDict, leftWidth, rightWidth):
+    print('PICNIC ITEMS'.center(leftWidth + rightWidth, '-'))
+    for k, v in itemsDict.items():
+        print(k.ljust(leftWidth, '.') + str(v).rjust(rightWidth))
+picnicItems = {'sandwiches': 4, 'apples': 12, 'cups': 4, 'cookies': 8000}
+printPicnic(picnicItems, 12, 5)
+printPicnic(picnicItems, 20, 6)
+print('\n'*10)
+
+print('HELLO WORLD'.center(50, '-'))

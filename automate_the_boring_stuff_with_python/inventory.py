@@ -16,10 +16,13 @@ def DisplayInventory(inv):
     print('Total number of items: ' + str(total_item))
 #DisplayInventory(inventory)
 
-def addToInventory(inventory, addedItems):
-    for i in addedItems:
-        inventory.setdefault(addedItems[i], 0)
-        inventory[addedItems] = inventory[addedItems] + 1
+def addToInventory(inventory,lootlist):
+#    for i in range(len(lootlist)):
+    for i in lootlist:
+        if lootlist[i] in inventory:
+            inventory[lootlist[i]] = inventory[lootlist[i]] + 1
+        else:
+            inventory.setdefault(lootlist[i],1)
     return inventory
 
 inv = {'gold coin': 42, 'rope': 1}
