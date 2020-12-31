@@ -98,7 +98,6 @@ for xt1, yt1, xt2, yt2 in tab:
     print(p1+p2)
 """
 
-
 """
 prime = 223
 a = FieldElement(0, prime)
@@ -119,6 +118,9 @@ for mul, x_raw, y_raw in tab:
 
 #wtf
 print()
+
+"""
+
 prime = 223
 a = FieldElement(0, prime)
 b = FieldElement(7, prime)
@@ -131,9 +133,7 @@ for s in range(1,22):
 #    print('{}*(47,71)=({},{})'.format(s,result.x.num,result.y.num))
 print(result)
 
-"""
 
-"""
 #ex5
 
 prime = 223
@@ -150,10 +150,11 @@ count = 0
 while(product.x != None):
     product += p
     count += 1
+    print(product)
     
-print(product.y)
+#print(product.y)
 print(count)
-"""
+
 
 # test wether the generator G is on the curve y**2 = x**3 + 7
 """
@@ -172,3 +173,4 @@ x = None
 print(type(x) == (int))
 
 """
+
