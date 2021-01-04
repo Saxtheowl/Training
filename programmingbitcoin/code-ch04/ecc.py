@@ -421,7 +421,7 @@ class S256Point(Point):
     def hash160(self, compressed=True):
         return hash160(self.sec(compressed))
 
-    def address(self, compressed=True, testnet=False):
+    def address(self, compressed=True, testnet=True):
         '''Returns the address string'''
         h160 = self.hash160(compressed)
         if testnet:
