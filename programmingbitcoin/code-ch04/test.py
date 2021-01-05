@@ -117,6 +117,8 @@ print(encode_base58(bytes.fromhex(h))
 
 """
 
+"""
+
 a = 333
 #generate the private key with the integer 333
 priv = PrivateKey(5002)
@@ -135,6 +137,9 @@ print(priv.hex())
 print(priv.point.address(compressed=False, testnet=True))
 print(priv2.point.address(compressed=True, testnet=True))
 print(priv3.point.address(compressed=True, testnet=False))
+
+"""
+
 # encode the SEC format to addresses format (ripemd160)
 #priv = .address(priv)
 """print(sys.getsizeof(priv))
@@ -155,3 +160,19 @@ print('{:x}'.format(x).zfill(64))
 
 
 """
+
+"""
+
+priv = PrivateKey(5003)
+priv2 = PrivateKey(2021**5)
+priv3 = PrivateKey(0x54321deadbeef)
+
+print(priv.wif(compressed=True, testnet=True))
+print(priv2.wif(compressed=False, testnet=True))
+print(priv3.wif(compressed=True, testnet=False))
+
+"""
+
+priv = PrivateKey(2000)
+
+print(priv.point.address(compressed=True, testnet=False))

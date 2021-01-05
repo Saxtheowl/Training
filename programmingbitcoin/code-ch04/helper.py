@@ -46,7 +46,7 @@ def encode_base58(s):
 
 # tag::source3[]
 def encode_base58_checksum(b):
-    return encode_base58(b + hash256(b)[:4])
+    return encode_base58(b)# + hash256(b)[:4])
 # end::source3[]
 
 
