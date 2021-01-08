@@ -1,5 +1,5 @@
 from ecc import S256Point, PrivateKey, Signature, FieldElement, G, N
-from helper import hash256, encode_base58
+from helper import hash256, encode_base58, encode_base58_checksum, int_to_little_endian
 import sys
 
 #5,000
@@ -173,6 +173,22 @@ print(priv3.wif(compressed=True, testnet=False))
 
 """
 
-priv = PrivateKey(2000)
+priv = PrivateKey(9092092091210920920919099930002)
 
-print(priv.point.address(compressed=True, testnet=False))
+print(priv.point.address(testnet=True))
+print(sys.getsizeof(priv))
+
+r = 0x37206a0610995c58074999cb9767b87af4c4978db68c06e8e6e81d282047a7c6
+s = 0x8ca63759c1157ebeaec0d03cecca119fc9a75bf8e6d0fa65c841c8e2738cdaec
+
+dat_sig = Signature(r, s)
+
+#print(type(dat_sig.der().hex().encode('ascii')))
+print(dat_sig.der().hex())
+print(sys.getsizeof(dat_sig))
+print(encode_base58_checksum(dat_sig.der()))
+print(sys.getsizeof(dat_sig))
+
+num = 10011545
+
+print(int_to_little_endian(num, 8))
