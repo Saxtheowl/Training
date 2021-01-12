@@ -26,6 +26,8 @@ class TxFetcher:
 
     @classmethod
     def fetch(cls, tx_id, testnet=False, fresh=False):
+        print("lul")
+        print(tx_id)
         if fresh or (tx_id not in cls.cache):
             url = '{}/tx/{}/hex'.format(cls.get_url(testnet), tx_id)
             response = requests.get(url)
@@ -145,10 +147,20 @@ class Tx:
     def fee(self):
         '''Returns the fee of this transaction in satoshi'''
         # initialize input sum and output sum
+#        i = 0
+        input_sum = 0
+        output_sum = 0
+        for tx_in in self.tx_ins:
+            input_sum += tx_in.value()
+        print(input_sum)
+        for tx_out in self.tx_outs:
+            output_sum += tx_out.amount
+        fee = input_sum - output_sum
+        return(fee)
         # use TxIn.value() to sum up the input amounts
         # use TxOut.amount to sum up the output amounts
         # fee is input sum - output sum
-        raise NotImplementedError
+#        raise NotImplementedError
 
 
 # tag::source2[]
@@ -205,7 +217,6 @@ class TxIn:
         Returns the amount in satoshi.
         '''
         tx = self.fetch_tx(testnet=testnet)
-        print('lul2')
         return tx.tx_outs[self.prev_index].amount
 
     def script_pubkey(self, testnet=False):
@@ -244,7 +255,6 @@ class TxOut:
     def serialize(self):  # <1>
         '''Returns the byte serialization of the transaction output'''
         result = int_to_little_endian(self.amount, 8)
-        print('lul')
         result += self.script_pubkey.serialize()
         return result
     # end::source4[]
