@@ -26,10 +26,9 @@ class TxFetcher:
 
     @classmethod
     def fetch(cls, tx_id, testnet=False, fresh=False):
-        print("lul")
-        print(tx_id)
         if fresh or (tx_id not in cls.cache):
             url = '{}/tx/{}/hex'.format(cls.get_url(testnet), tx_id)
+            print("lul")
             response = requests.get(url)
             try:
                 raw = bytes.fromhex(response.text.strip())
