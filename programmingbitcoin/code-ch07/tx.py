@@ -174,7 +174,12 @@ class Tx:
         # add SIGHASH_ALL using int_to_little_endian in 4 bytes
         # hash256 the serialization
         # convert the result to an integer using int.from_bytes(x, 'big')
-        raise NotImplementedError
+        print(self.tx_ins[input_index])
+        print('version is {}'.format(self.version))
+        result = int_to_little_endian(self.version, 4)
+        result += encode_varint(len(self.tx_ins))
+        print(result)
+#        raise NotImplementedError
 
     def verify_input(self, input_index):
         '''Returns whether the input has a valid signature'''
