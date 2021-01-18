@@ -174,21 +174,42 @@ class Tx:
         # add SIGHASH_ALL using int_to_little_endian in 4 bytes
         # hash256 the serialization
         # convert the result to an integer using int.from_bytes(x, 'big')
-        print(self.tx_ins[input_index])
-        print('version is {}'.format(self.version))
-        result = int_to_little_endian(self.version, 4)
-        result += encode_varint(len(self.tx_ins))
-        print(result)
-#        raise NotImplementedError
+        
+        s = int_to_little_endian(self.version, 4)
+        s += encode_varint(len(self.tx_ins))
+        for i, tx_in in enumerate(self.tx_ins):
+            if i == input_index:
+                s += TxIn(
+                    prev_tx = tx_in.prev_tx,
+                    prev_index = tx_in.prev_index,
+                    script_sig = tx_in.script_pubkey(self.testnet),
+                    sequence = tx_in.sequence,
+                    ).serialize()
+            else:
+                s += TxIn(
+                    prev_tx = tx_in.prev_tx,
+                    prev_index = tx_in.prev_index,
+                    sequence = tx_in.sequence,
+                    ).serialize()
+        s += encode_varint(len(self.tx_outs))
+        for tx_out in self.tx_outs:
+            s += tx_out.serialize()
+        s +=  int_to_little_endian(self.locktime, 4)
+        s += int_to_little_endian(SIGHASH_ALL, 4)
+        h256 = hash256(s)
+#        print(s.hex())
+        return int.from_bytes(h256, 'big')
+    #        raise NotImplementedError
 
     def verify_input(self, input_index):
         '''Returns whether the input has a valid signature'''
+        print(self.tx_ins[input_index])
         # get the relevant input
         # grab the previous ScriptPubKey
         # get the signature hash (z)
         # combine the current ScriptSig and the previous ScriptPubKey
         # evaluate the combined script
-        raise NotImplementedError
+#        raise NotImplementedError
 
     # tag::source2[]
     def verify(self):
