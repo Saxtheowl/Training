@@ -108,7 +108,7 @@ class Tx:
         '''
         # s.read(n) will return n bytes
         # version is an integer in 4 bytes, little-endian
-        print(testnet)
+#        print(testnet)
         version = little_endian_to_int(s.read(4))
         # num_inputs is a varint, use read_varint(s)
         num_inputs = read_varint(s)
