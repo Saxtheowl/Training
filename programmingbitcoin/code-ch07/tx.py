@@ -22,8 +22,10 @@ class TxFetcher:
     @classmethod
     def get_url(cls, testnet=False):
         if testnet:
+            print('testnet ok')
             return 'http://testnet.programmingbitcoin.com'
         else:
+            print('testnet no')
             return 'http://mainnet.programmingbitcoin.com'
 
     @classmethod

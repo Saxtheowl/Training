@@ -1,6 +1,7 @@
 ############## PLEASE RUN THIS CELL FIRST! ###################
 
 # import everything and define a test runner function
+
 """
 
 from importlib import reload
@@ -29,7 +30,6 @@ from ecc import PrivateKey
 #secret = little_endian_to_int(hash256(b'dat_test_private_key'))
 
 #public key = print(private_key.point.address(testnet=True)) mvEg6eZ3sUApodedYQrkpEPMMALsr1K1k1
-
 
 # UTXO that we gonna receive
 
@@ -70,6 +70,4 @@ tx_obj.tx_ins[0].script_sig = script_sig
 print(tx_obj.serialize().hex())
 
 # end
-
-# use 2 txin to send to mwJn1YPMq7y5F8J3LkC5Hxg9PHyZ5K4cFv
 
