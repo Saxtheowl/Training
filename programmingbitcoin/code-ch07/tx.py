@@ -22,10 +22,8 @@ class TxFetcher:
     @classmethod
     def get_url(cls, testnet=False):
         if testnet:
-            print('testnet ok')
             return 'http://testnet.programmingbitcoin.com'
         else:
-            print('testnet no')
             return 'http://mainnet.programmingbitcoin.com'
 
     @classmethod
@@ -246,7 +244,6 @@ class Tx:
         sec = private_key.point.sec()
         script_sig = Script([sig, sec])
         self.tx_ins[input_index].script_sig = script_sig
-        print(len(self.serialize().hex()))
         if(self.verify_input(input_index) == True):
             return True
         else:

@@ -100,6 +100,7 @@ class Script:
             if type(cmd) == int:
                 # turn the cmd into a single byte integer using int_to_little_endian
                 result += int_to_little_endian(cmd, 1)
+#                print("element")
             else:
                 # otherwise, this is an element
                 # get the length in bytes

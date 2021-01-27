@@ -20,8 +20,7 @@ LOGGER = getLogger(__name__)
 def encode_num(num):
     if num == 0:
         return b''
-    abs_num = abs(num)
-    negative = num < 0
+    abs_num = abs(num)    negative = num < 0
     result = bytearray()
     while abs_num:
         result.append(abs_num & 0xff)
