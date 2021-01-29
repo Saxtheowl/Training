@@ -3,6 +3,7 @@
 # import everything and define a test runner function
 from importlib import reload
 from helper import run
+from helper import HelperTest
 import ecc
 import helper
 import op

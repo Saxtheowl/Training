@@ -5,7 +5,7 @@
 """
 
 from importlib import reload
-from helper import run, little_endian_to_int
+from helper import run, little_endian_to_int, int_to
 import ecc
 import helper
 import tx
@@ -20,19 +20,23 @@ print(little_endian_to_int(dat_s.read(4)))
 
 """
 
-from helper import decode_base58, little_endian_to_int, hash256, SIGHASH_ALL
+from helper import decode_base58, little_endian_to_int, hash256, SIGHASH_ALL, int_to_little_endian
 from script import p2pkh_script, Script
 from tx import TxIn, TxOut, Tx
 from ecc import PrivateKey
 
 # make a transact to mwJn1YPMq7y5F8J3LkC5Hxg9PHyZ5K4cFv with 60% of a UTXO and send back the change
 
-secret = little_endian_to_int(hash256(b'dat_test_private_key'))
+dat_bin_secret = 'dat_test_private_key'
+#print(dat_bin_secret.decode('ascii'))
 
-private_key = PrivateKey(secret)
+for i in range(0, 1):
 
-public_key = print(private_key.point.address(testnet=False)) #1FiiobU54Sja2XB1pqtNzKB2VAkAzm2Ssi 
-public_key = print(private_key.point.address(testnet=True)) # mvEg6eZ3sUApodedYQrkpEPMMALsr1K1k1
+    secret = little_endian_to_int(hash256(b'dat_test_private_key'))
+#    secret.to_bytes(len(secret), 'little')
+    private_key = PrivateKey(secret)
+    public_key = print(private_key.point.address(testnet=False)) #1FiiobU54Sja2XB1pqtNzKB2VAkAzm2Ssi 
+    public_key = print(private_key.point.address(testnet=True)) # mvEg6eZ3sUApodedYQrkpEPMMALsr1K1k1
 
 # UTXO that we gonna receive
 
