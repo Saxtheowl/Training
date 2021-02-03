@@ -29,11 +29,14 @@ from ecc import PrivateKey
 
 dat_bin_secret = 'dat_test_private_key'
 #print(dat_bin_secret.decode('ascii'))
+secret = 0
 
-for i in range(0, 1):
+for i in range(0, 100000):
 
-    secret = little_endian_to_int(hash256(b'dat_test_private_key'))
+#    secret = little_endian_to_int(hash256(b'dat_test_private_key'))
 #    secret.to_bytes(len(secret), 'little')
+
+    secret += 1
     private_key = PrivateKey(secret)
     public_key = print(private_key.point.address(testnet=False)) #1FiiobU54Sja2XB1pqtNzKB2VAkAzm2Ssi 
     public_key = print(private_key.point.address(testnet=True)) # mvEg6eZ3sUApodedYQrkpEPMMALsr1K1k1
