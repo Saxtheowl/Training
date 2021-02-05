@@ -207,6 +207,7 @@ class Tx:
         # grab the previous ScriptPubKey
         script_pubkey = tx_in.script_pubkey(testnet=self.testnet)
         if Script.is_p2sh_script_pubkey(script_pubkey) == True:
+            print("extra lul")
             cmd = tx_in.script_sig.cmds[-1]
             raw_redeem = encode_varint(len(cmd)) + cmd
             redeem_script = Script.parse(BytesIO(raw_redeem))
