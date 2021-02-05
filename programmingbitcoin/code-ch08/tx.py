@@ -170,7 +170,9 @@ class Tx:
         # loop through each input using enumerate, so we have the input index
         for i, tx_in in enumerate(self.tx_ins):
             # if the input index is the one we're signing
-            if i == input_index:
+            if redeem_script:
+                script_sig = redeem_script
+            elif i == input_index:
                 # if the RedeemScript was passed in, that's the ScriptSig
                 # otherwise the previous tx's ScriptPubkey is the ScriptSig
                 script_sig = tx_in.script_pubkey(self.testnet)
@@ -204,6 +206,7 @@ class Tx:
         tx_in = self.tx_ins[input_index]
         # grab the previous ScriptPubKey
         script_pubkey = tx_in.script_pubkey(testnet=self.testnet)
+        
         # check to see if the ScriptPubkey is a p2sh using
         # Script.is_p2sh_script_pubkey()
             # the last cmd in a p2sh is the RedeemScript
