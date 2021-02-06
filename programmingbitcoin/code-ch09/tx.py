@@ -257,11 +257,17 @@ class Tx:
 
     def is_coinbase(self):
         '''Returns whether this transaction is a coinbase transaction or not'''
+        if len(self.tx_ins) != 1:
+            return False
+        if self.tx_ins[0].prev_tx != '\x00' * 32:
+            return False
+
+#            print(type(self.tx_ins[0]))
         # check that there is exactly 1 input
         # grab the first input
         # check that first input prev_tx is b'\x00' * 32 bytes
         # check that first input prev_index is 0xffffffff
-        raise NotImplementedError
+#        raise NotImplementedError
 
     def coinbase_height(self):
         '''Returns the height of the block this coinbase transaction is in
@@ -296,7 +302,9 @@ class TxIn:
         return a TxIn object
         '''
         # prev_tx is 32 bytes, little endian
+        print(type(s))
         prev_tx = s.read(32)[::-1]
+        print(type(prev_tx))
         # prev_index is an integer in 4 bytes, little endian
         prev_index = little_endian_to_int(s.read(4))
         # use Script.parse to get the ScriptSig
