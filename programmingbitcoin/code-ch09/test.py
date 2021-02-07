@@ -20,9 +20,22 @@
 # import everything and define a test runner function
 
 from importlib import reload
-from helper import run
+from helper import run, hash256
+from io import BytesIO
 import block
 import ecc
 import helper
 import script
 import tx
+
+#print(type(b'\x00'))
+#print(type(0xffffffff))
+
+# from io import BytesIO
+# from block import Block
+# b = Block.parse(BytesIO(bytes.fromhex('020000208ec39428b17323fa0ddec8e887b\
+# 4a7c53b8c0a0a220cfd0000000000000000005b0750fce0a889502d40508d39576821155e9c9e3\
+# f5c3157f961db38fd8b25be1e77a759e93c0118a4ffd71d')))
+# print('BIP9: {}'.format(b.version >> 29 == 0b001))
+
+print(hash256(bytes.fromhex('020000208ec39428b17323fa0ddec8e887b4a7c53b8c0a0a220cfd0000000000000000005b0750fce0a889502d40508d39576821155e9c9e3f5c3157f961db38fd8b25be1e77a759e93c0118a4ffd71d'))[::-1])
