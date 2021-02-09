@@ -1,3 +1,14 @@
+############## PLEASE RUN THIS CELL FIRST! ###################
+
+# import everything and define a test runner function
+from importlib import reload
+from helper import run
+from block import Block
+import ecc
+import helper
+import script
+import tx
+
 # import requests
 
 # def get_url(testnet=False):
@@ -77,4 +88,19 @@ import random
 # #     print('dat nb try: {}', format(dat_nb_try))
    
 # dat_end_print()
+
+block_raw = bytes.fromhex('04000000fbedbbf0cfdaf278c094f187f2eb987c86a199da22bbb20400000000000000007b7697b29129648fa08b4bcd13c9d5e60abb973a1efac9c8d573c71c807c56c3d6213557faa80518c3737ec1')
+stream = BytesIO(block_raw)
+block = Block.parse(stream)
+dat_target = block.target()
+
+raw_bytes = dat_target.to_bytes(32, 'big')
+raw_bytes = raw_bytes.lstrip(b'\x00')
+if raw_bytes[0] > 0x7f:
+    exponent = len(raw_bytes) + 1
+    coefficient = b'\x00' + raw_bytes[:2]
+else:
+    exponent = len(raw_bytes)
+    coefficient = raw_bytes[:3]
+new_bytes = coefficient[::-1] + bytes([exponent])
 
