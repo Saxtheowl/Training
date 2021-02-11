@@ -17,3 +17,11 @@ raw_dat_tx = bytes.fromhex('010000000199a24308080ab26e6fb65c4eccfadf76749bb5bfa8
 
 stream = BytesIO(raw_dat_tx)
 dat_tx = Tx.parse(stream, testnet=True)
+
+def dat_test_func(*args):
+    print(args[0])
+    print(args[1])
+    print('lul')
+
+    
+dat_test_func('100', '101', '102')
