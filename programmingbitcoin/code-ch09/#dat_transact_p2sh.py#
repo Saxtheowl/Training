@@ -7,9 +7,9 @@ from ecc import PrivateKey
 
 # 2 private key because 2 of 2
 
-secret1 = little_endian_to_int(hash256(b'dat_test_private_key'))
+secret1 = little_endian_to_int(hash256(b'dat_test_private_key_p2sh1'))
 
-secret2 = little_endian_to_int(hash256(b'dat_test_private_key2'))
+secret2 = little_endian_to_int(hash256(b'dat_test_private_key2_p2sh2'))
 
 # derived pubkeys
 

@@ -430,7 +430,6 @@ class S256Point(Point):
         if testnet and p2sh == False:
             prefix = b'\x6f'
         elif p2sh == True and testnet == True:
-            print('lul')
             prefix = b'\xc4'
         else:
             prefix = b'\x00'
