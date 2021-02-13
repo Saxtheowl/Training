@@ -75,7 +75,6 @@ change_output = TxOut(amount=change_amount, script_pubkey = change_script)
 
 target_amount = int(0.00010 * 100000000)
 target_h160 = decode_base58('2N7e6ZAGXoepdVYu2Y8ho7fTf6oxE3j9UwS')
-
 target_script = p2pkh_script(target_h160)
 target_output = TxOut(amount=target_amount, script_pubkey=dat_redeem_script_op)
 

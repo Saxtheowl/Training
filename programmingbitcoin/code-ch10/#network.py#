@@ -55,6 +55,8 @@ class NetworkEnvelope:
         command = command.strip(b'\x00')
         print(command)
         payload_length = little_endian_to_int(4)
+        payload_checksum = s.read(4)
+        
         # command 12 bytes
         # strip the trailing 0's
         # payload length 4 bytes, little endian
