@@ -55,8 +55,12 @@ change_output = TxOut(amount=change_amount, script_pubkey = change_script)
 
 target_amount = int(0.00006 * 100000000)
 target_h160 = decode_base58('mwJn1YPMq7y5F8J3LkC5Hxg9PHyZ5K4cFv')
+print()
+print(target_h160)
 
 target_script = p2pkh_script(target_h160)
+print()
+print(target_script)
 target_output = TxOut(amount=target_amount, script_pubkey=target_script)
 tx_obj = Tx(1, [tx_in], [change_output, target_output], 0, True)
 #print(tx_obj).hex()

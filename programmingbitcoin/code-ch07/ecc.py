@@ -420,13 +420,13 @@ class S256Point(Point):
     def hash160(self, compressed=True):
         return hash160(self.sec(compressed))
 
-    def address(self, compressed=True, testnet=False, dat_h160=True):
+    def address(self, compressed=True, testnet=False, p2sh=True):
         '''Returns the address string'''
         if testnet:
             prefix = b'\x6f'
         else:
             prefix = b'\x00'
-        if dat_h160:
+        if p2sh:
             dat_address = self.hash160(compressed)
         else:
             dat_address = self.sec(compressed)
