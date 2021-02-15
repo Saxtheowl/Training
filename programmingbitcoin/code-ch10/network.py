@@ -51,10 +51,13 @@ class NetworkEnvelope:
         if magic != expected_magic:
             raise RuntimeError('magic is not right {} vs {}'.format(magic.hex(), expected_magic.hex()))
         command = s.read(12)
-        print(command)
         command = command.strip(b'\x00')
-        print(command)
-        payload_length = little_endian_to_int(4)
+        payload_length = little_endian_to_int(s.read(4))
+        payload_checksum = s.read(4)
+        payload = s.read(payload_length)
+        calculated_checksum = hash256(payload)[:4]
+        if calculated_checksum != payload_checksum:
+            raise IOError('checksum does not match')
         # command 12 bytes
         # strip the trailing 0's
         # payload length 4 bytes, little endian
@@ -63,17 +66,23 @@ class NetworkEnvelope:
         # verify checksum
         # return an instance of the class
         #raise NotImplementedError
-#        return cls()
+        return cls(command, payload, testnet=testnet)
 
     def serialize(self):
         '''Returns the byte serialization of the entire network message'''
+        result = self.magic
+        result += self.command + b'\x00' * (12 - len(self.command))
+        result += int_to_little_endian(len(self.payload), 4)
+        result += hash256(self.payload)[:4]
+        result += self.payload
         # add the network magic
         # command 12 bytes
         # fill with 0's
         # payload length 4 bytes, little endian
         # checksum 4 bytes, first four of hash256 of payload
         # payload
-        raise NotImplementedError
+        return(result)
+#        raise NotImplementedError
 
     def stream(self):
         '''Returns a stream for parsing the payload'''
@@ -139,6 +148,25 @@ class VersionMessage:
 
     def serialize(self):
         '''Serialize this message to send over the network'''
+        result = int_to_little_endian(self.version, 4)
+        result += int_to_little_endian(self.services, 8)
+        result += int_to_little_endian(self.timestamp, 8)
+        result += int_to_little_endian(self.receiver_services, 8)
+        result += 10 * b'\x00' + 2 * b'\xff' + self.receiver_ip
+        result += self.receiver_port.to_bytes(2, byteorder='big')
+        result += int_to_little_endian(self.sender_services, 8)
+        result += 10 * b'\x01' + 2 * b'\xff' + self.sender_ip
+        result += self.sender_port.to_bytes(2, byteorder='big')
+        result += self.nonce
+        result += encode_varint(len(self.user_agent))
+        result += self.user_agent
+        result += int_to_little_endian(self.latest_block, 4)
+        if self.relay:
+            result += b'\x01'
+        else:
+            result += b'\x00'
+        return result
+        
         # version is 4 bytes little endian
         # services is 8 bytes little endian
         # timestamp is 8 bytes little endian
@@ -152,7 +180,7 @@ class VersionMessage:
         # useragent is a variable string, so varint first
         # latest block is 4 bytes little endian
         # relay is 00 if false, 01 if true
-        raise NotImplementedError
+#        raise NotImplementedError
 
 
 class VersionMessageTest(TestCase):
@@ -291,10 +319,13 @@ class SimpleNode:
     def handshake(self):
         '''Do a handshake with the other node.
         Handshake is sending a version message and getting a verack back.'''
+        version = VersionMessage()
+        self.send(version)
+        self.wait_for(VerAckMessage)
         # create a version message
         # send the command
         # wait for a verack message
-        raise NotImplementedError
+#        raise NotImplementedError
     # tag::source4[]
 
     def send(self, message):  # <1>
