@@ -254,11 +254,15 @@ class GetHeadersMessage:
 
     def serialize(self):
         '''Serialize this message to send over the network'''
+        result = int_to_little_endian(self.version, 4)
+        result += encode_varint(self.num_hashes)
+        result += self.start_block[::-1]
+        result += self.end_block[::-1]
+        return result
         # protocol version is 4 bytes little-endian
         # number of hashes is a varint
         # start block is in little-endian
         # end block is also in little-endian
-        raise NotImplementedError
 
 
 class GetHeadersMessageTest(TestCase):
@@ -320,6 +324,7 @@ class SimpleNode:
         '''Do a handshake with the other node.
         Handshake is sending a version message and getting a verack back.'''
         version = VersionMessage()
+        print(version)
         self.send(version)
         self.wait_for(VerAckMessage)
         # create a version message
@@ -332,6 +337,7 @@ class SimpleNode:
         '''Send a message to the connected node'''
         envelope = NetworkEnvelope(
             message.command, message.serialize(), testnet=self.testnet)
+        print(envelope)
         if self.logging:
             print('sending: {}'.format(envelope))
         self.socket.sendall(envelope.serialize())
@@ -350,6 +356,7 @@ class SimpleNode:
         while command not in command_to_class.keys():
             envelope = self.read()
             command = envelope.command
+#            print(envelope.command)
             if command == VersionMessage.command:
                 self.send(VerAckMessage())
             elif command == PingMessage.command:
