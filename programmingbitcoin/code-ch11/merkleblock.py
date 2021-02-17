@@ -184,7 +184,36 @@ class MerkleBlock:
     @classmethod
     def parse(cls, s):
         '''Takes a byte stream and parses a merkle block. Returns a Merkle Block object'''
-        # version - 4 bytes, Little-Endian integer
+        # version = little_endian_to_int(s.read(4))
+        # prev_block = s.read(4)[::-1]
+        # merkle_root = s.read(4)[::-1]
+        # timestamp = little_endian_to_int(s.read(4))
+        # bits = s.read(4)
+        # nonce = s.read(4)
+        # total_tx = little_endian_to_int(s.read(4))
+        # nb_tx_hashes = read_varint(s)
+        # hashes = []
+        # for _ in range(nb_tx_hashes):
+        #     hashes.append(s.read(32)[::-1])
+        # flags_length = read_varint(s)
+        # flags = s.read(flags_length)
+        # return cls(version, prev_block, merkle_root, timestamp, bits,
+        # nonce, total, hashes, flags)
+        version = little_endian_to_int(s.read(4))
+        prev_block = s.read(32)[::-1]
+        merkle_root = s.read(32)[::-1]
+        timestamp = little_endian_to_int(s.read(4))
+        bits = s.read(4)
+        nonce = s.read(4)
+        total = little_endian_to_int(s.read(4))
+        num_hashes = read_varint(s)
+        hashes = []
+        for _ in range(num_hashes):
+            hashes.append(s.read(32)[::-1])
+        flags_length = read_varint(s)
+        flags = s.read(flags_length)
+        return cls(version, prev_block, merkle_root, timestamp, bits, nonce, total, hashes, flags)
+        # # version - 4 bytes, Little-Endian integer
         # prev_block - 32 bytes, Little-Endian (use [::-1])
         # merkle_root - 32 bytes, Little-Endian (use [::-1])
         # timestamp - 4 bytes, Little-Endian integer
@@ -196,7 +225,7 @@ class MerkleBlock:
         # length of flags field - varint
         # read the flags field
         # initialize class
-        raise NotImplementedError
+#        raise NotImplementedError
 
     def is_valid(self):
         '''Verifies whether the merkle tree information validates to the merkle root'''
