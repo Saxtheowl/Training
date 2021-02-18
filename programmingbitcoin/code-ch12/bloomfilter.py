@@ -24,6 +24,9 @@ class BloomFilter:
 
     def add(self, item):
         '''Add an item to the filter'''
+        i = 0
+        for i in enumerate(self.function_count):
+            print(i)
         # iterate self.function_count number of times
             # BIP0037 spec seed is i*BIP37_CONSTANT + self.tweak
             # get the murmur3 hash given that seed

@@ -172,7 +172,6 @@ def is_valid(self):
     hashes = [h[::-1] for h in self.hashes]
     merkle_tree = MerkleTree(self.total)
     merkle_tree.populate_tree(flag_bits, hashes)
-    return merkle_tree.root()[::-1] == self.merkle_root
 # end::answer7[]
 
 
