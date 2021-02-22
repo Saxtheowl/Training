@@ -1,17 +1,17 @@
 ############## PLEASE RUN THIS CELL FIRST! ###################
 
 # import everything and define a test runner function
-# from importlib import reload
-# from helper import run, hash256, hash160, murmur3, bit_field_to_bytes
-# from bloomfilter import BIP37_CONSTANT
-# import block
-# import ecc
-# import helper
-# import merkleblock
-# import network
-# import script
-# import tx
-# import bloomfilter
+from importlib import reload
+from helper import run, hash256, hash160, murmur3, bit_field_to_bytes
+from bloomfilter import BIP37_CONSTANT
+import block
+import ecc
+import helper
+import merkleblock
+import network
+import script
+import tx
+import bloomfilter
 
 # bit_field_size = 999
 # bit_field = [0] * bit_field_size
@@ -50,19 +50,12 @@ from tx import Tx
 #last_block_hex = '00000000000538d5c2246336644f9a4956551afb44ba47278759ec55ea912e19'
 #address = 'mwJn1YPMq7y5F8J3LkC5Hxg9PHyZ5K4cFv'
 
-# first test
+# our test
 
 #last_block_hex = '0000000017e6fbd8931bce659d45d92040a4674950f2ae5416d0bf1a239641f9'
-#last_block_hex = '00000000970369111c044804ec0319792c9e1aa29f59a622c5d14b3544ae4eba'
+last_block_hex = '00000000970369111c044804ec0319792c9e1aa29f59a622c5d14b3544ae4eba'
 #0000000017e6fbd8931bce659d45d92040a4674950f2ae5416d0bf1a239641f9
 #last_block_hex = '0000000000000004fea90996fdf40772e2c2c76205a1fb57fae465194fdaffb9'
-#address = 'mvEg6eZ3sUApodedYQrkpEPMMALsr1K1k1'
-
-# test with 2 tx in a unique block
-#last_block_hex = '0000000017e6fbd8931bce659d45d92040a4674950f2ae5416d0bf1a239641f9'
-last_block_hex = '0000000045eaa1b152db5f7feee8406a0bf7b2f257690465cbf20ca8730539a9' # last, return 3 tx and the 2 were looking for
-#last_block_hex = '0000000000000018a7710bcde664b0f65bd30d7767d82c250955dff28ed10d52'
-#last_block_hex = '00000000970369111c044804ec0319792c9e1aa29f59a622c5d14b3544ae4eba'
 address = 'mvEg6eZ3sUApodedYQrkpEPMMALsr1K1k1'
 
 
@@ -85,26 +78,15 @@ for b in headers.blocks:
     getdata.add_data(FILTERED_BLOCK_DATA_TYPE, b.hash())
 node.send(getdata)
 found = False
-dat_tx = []
-count = 0
 while not found:
+    print('ok1')
     message = node.wait_for(MerkleBlock, Tx)
-#    print(message.tx_outs)
     if message.command == b'merkleblock':
         if not message.is_valid():
             raise RuntimeError('invalid merkle proof')
     else:
         for i, tx_out in enumerate(message.tx_outs):
             if tx_out.script_pubkey.address(testnet=True) == address:
-                #dat_tx.append(message.id)
-                print('found: {}:{} count:{}'.format(message.id(), i, count))
-                print(message)
-#                print('tx_out:{}'.format(tx_out))
-#                print('tx_outs:{}'.format(message.tx_outs))
-                count += 1
-                if count == 3:
-                    found = True
-                    break
-                #print(message.tx_outs)
-                #found = True
-                #break
+                print('found: {}:{}'.format(message.id(), i))
+                found = True
+                break
