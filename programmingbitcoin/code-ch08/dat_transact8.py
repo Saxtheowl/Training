@@ -30,7 +30,7 @@ dat_redeem_script_op = Script([0x52, public_key1, public_key2, 0x52, 0xae])
 
 # we serialize it in binary
 
-dat_redeem_script_serialized = dat_redeem_script_op.raw_serialize()
+dat_redeem_script_serialized = dat_redeem_script_op.serialize()
 
 # hash 160
 
@@ -57,7 +57,7 @@ print(dat_redeem_script_address)
 
 # UTXO that we gonna receive
 
-prev_tx = bytes.fromhex('2adf399966b32e8543ca829263958154d3a03ac7b2a02dd49aae5a9248e636b7')
+prev_tx = bytes.fromhex('a0cbae8045fd0a52f198c21c855874dbad44cc964ead3ed4d8fb1838ce4b9e4b')
 prev_index = 0
 
 # create the txin with the output of the UTXO we have been given
