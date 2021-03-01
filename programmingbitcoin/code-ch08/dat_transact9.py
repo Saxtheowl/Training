@@ -31,7 +31,6 @@ dat_redeem_script_op = Script([0x52, public_key1, public_key2, 0x52, 0xae])
 # we serialize it in binary
 
 dat_redeem_script_serialized = dat_redeem_script_op.serialize()
-print('dat_redeem_script_serialized:{}'.format(dat_redeem_script_serialized))
 
 # hash 160
 
