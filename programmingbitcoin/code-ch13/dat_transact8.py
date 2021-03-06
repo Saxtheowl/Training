@@ -25,6 +25,7 @@ public_key2 = decode_base58('ms4kdy8Hn4WfxK2J2VpbonTit5NeNy6vJS')
 #redeem script as op code
 
 dat_redeem_script_op = Script([0x52, public_key1, public_key2, 0x52, 0xae])
+print('dat_redeem_script_op:{}'.format(dat_redeem_script_op))
 
 # we serialize it in binary
 
@@ -35,19 +36,25 @@ print('dat_redeem_script_serialized:{}'.format(dat_redeem_script_serialized))
 
 dat_redeem_script_h160 = hash160(dat_redeem_script_serialized)
 
+print('dat_redeem_script_h160:{}'.format(dat_redeem_script_h160))
+
 # we get the address
 
 dat_redeem_script_address = h160_to_p2sh_address(dat_redeem_script_h160, testnet=True)
+
+print('dat_redeem_script_address:{}'.format(dat_redeem_script_address))
 
 # get it back in bytes
 
 dat_target_h160 = decode_base58(dat_redeem_script_address)
 
+print('dat_redeem_script_h160:{}'.format(dat_target_h160))
+
 # use the result to build our p2sh_script
 
 target_script = p2sh_script(dat_target_h160)
 
-print(target_script)
+print('target script :{}'.format(target_script))
 print('is p2sh: {}'.format(target_script.is_p2sh_script_pubkey()))
 
 print(dat_redeem_script_h160)
@@ -56,8 +63,8 @@ print('redeem script address: {}'.format(dat_redeem_script_address))
 
 # UTXO that we gonna receive
 
-prev_tx = bytes.fromhex('637e37f1fb26480b687c522ed44ab84fd236d4e4867c3338f29f244d93246768')
-prev_index = 0
+prev_tx = bytes.fromhex('6a8d25641686f572c7b5bba56c49db66ff0b896b447d2a768933cf818472958e')
+prev_index = 1
 
 # create the txin with the output of the UTXO we have been given
 
